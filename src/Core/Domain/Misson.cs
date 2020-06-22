@@ -10,8 +10,10 @@ namespace com.github.olo42.SAROnion.Core.Domain
     public IEnumerable<Action> Actions { get; set; }
     public Person Leader { get; set; }   
     public string Objective { get; set; }
-    IEnumerable<Unit> Units { get; set; }
+    public IEnumerable<Unit> Units { get; set; }
+    public IEnumerable<Casualty> Casualties { get; set; }
     public IEnumerable<Contact> Contacts { get; set; }
+    public IEnumerable<Document> Documents { get; set; }
     public EMissionState State { get; set; }
   }
 }
