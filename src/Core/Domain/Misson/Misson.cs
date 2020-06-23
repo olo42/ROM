@@ -7,7 +7,7 @@ namespace com.github.olo42.SAROnion.Core.Domain
 {
   public class Misson : BaseEntity
   {
-    public IEnumerable<Action> Actions { get; set; }
+    public IEnumerable<Log> Logs { get; set; }
     public Person Leader { get; set; }   
     public string Objective { get; set; }
     public IEnumerable<Unit> Units { get; set; }

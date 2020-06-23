@@ -3,7 +3,7 @@
 
 namespace com.github.olo42.SAROnion.Core.Domain
 {
-  public class Action
+  public class Log
   {
   }
 }
