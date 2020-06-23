@@ -8,10 +8,10 @@ namespace com.github.olo42.SAROnion.Core.Domain
   public class Misson : BaseEntity
   {
     public IEnumerable<Log> Logs { get; set; }
-    public Person Leader { get; set; }   
     public string Objective { get; set; }
     public IEnumerable<Unit> Units { get; set; }
     public IEnumerable<Casualty> Casualties { get; set; }
+    public IEnumerable<Functionary> Functionaries { get; set; }
     public IEnumerable<Contact> Contacts { get; set; }
     public IEnumerable<Document> Documents { get; set; }
     public EMissionState State { get; set; }
