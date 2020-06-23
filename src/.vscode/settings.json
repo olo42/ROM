@@ -1,0 +1,19 @@
+{
+  "files.exclude": {
+    "**/.editorconfig": true,
+    "**/.gitignore": true,
+    "**/.vscode": true,
+    "**/*.csproj": false,
+    "**/bin": true,
+    "**/obj": true
+  },
+  "coverage-gutters.coverageReportFileName": "Tests/Reports/index.html",
+  "coverage-gutters.coverageFileNames": [
+    "lcov.info",
+    "cov.xml",
+    "coverage.xml",
+    "jacoco.xml",
+    "coverage.cobertura.xml",
+    "coverage,opencover.xml"
+  ]
+}
