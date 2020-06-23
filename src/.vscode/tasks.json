@@ -81,7 +81,7 @@
                 "/consoleloggerparameters:NoSummary",
                 "-p:CollectCoverage=true",
                 "-p:CoverletOutputFormat=cobertura",
-                "-p:CoverletOutput=./Results/"
+                "-p:CoverletOutput=./Tests/Results/"
             ],
             "problemMatcher": "$msCompile"
         }
