@@ -3,11 +3,11 @@
 
 namespace com.github.olo42.SAROnion.Core.Domain
 {
-  public class Document : BaseEntity
+  public enum EDocumentType
   {
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public EDocumentType Type { get; set; }
-    public string Path { get; set; }
+    Image,
+    Map,
+    Track,
+    Text
   }
 }
