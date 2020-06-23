@@ -3,7 +3,8 @@
 
 namespace com.github.olo42.SAROnion.Core.Domain
 {
-  public class Functionary
+  public class Functionary : Person
   {
+    public Function Function { get; set; }
   }
 }

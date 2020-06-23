@@ -3,7 +3,9 @@
 
 namespace com.github.olo42.SAROnion.Core.Domain
 {
-  public class Person
+  public class Person : BaseEntity
   {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
   }
 }

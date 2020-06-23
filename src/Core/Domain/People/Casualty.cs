@@ -3,7 +3,8 @@
 
 namespace com.github.olo42.SAROnion.Core.Domain
 {
-  public class Casualty
+  public class Casualty : Person
   {
+    public string Description { get; set; }
   }
 }
