@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8D12247
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{B0519084-6FD3-426F-8F91-C9BA9EEE899D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests", "Tests\Unit\CoreTests\CoreTests.csproj", "{320C7217-46B1-4E47-A018-52ABEABF27CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests", "Tests\Unit\Core\Core.csproj", "{320C7217-46B1-4E47-A018-52ABEABF27CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Core\Application\Application.csproj", "{4EB296BF-D095-4D15-958D-D5B470155DB0}"
 EndProject
