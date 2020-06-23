@@ -2,12 +2,11 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Threading.Tasks;
-using com.github.olo42.SAROnion.Core.Domain;
 
 namespace com.github.olo42.SAROnion.Core.Application
 {
-  public interface ILogTypeRepository
+  public interface IRepository<T>
   {
-    Task Write(LogType logType);
+    Task Write(T input);
   }
 }
