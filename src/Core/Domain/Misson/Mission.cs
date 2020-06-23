@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace com.github.olo42.SAROnion.Core.Domain
 {
-  public class Misson : BaseEntity
+  public class Mission : BaseEntity
   {
     public IEnumerable<Log> Logs { get; set; }
     public string Objective { get; set; }
