@@ -1,13 +1,12 @@
 // Copyright (c) Oliver Appel. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using com.github.olo42.SAROnion.Core.Domain;
 
 namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
 {
-  public class Read : IRead<ReadIn, ReadOut>
+  public class Read : IRead<string, LogType>
   { 
     private IRepository<LogType> repository;
 
@@ -16,9 +15,9 @@ namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
       this.repository = repository;
     }
 
-    public ReadOut Execute(ReadIn input)
+    public Task<LogType> Execute(string id)
     {
-      return new ReadOut { Data = repository.Read(input.Id) };
+      return repository.Read(id);
     }
   }
 }

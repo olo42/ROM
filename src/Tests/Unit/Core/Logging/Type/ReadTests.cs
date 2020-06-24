@@ -15,7 +15,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
   [TestFixture]
   public class ReadTests
   {
-    private IRead<ReadIn, ReadOut> read;
+    private IRead<string, LogType> read;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
@@ -30,11 +30,11 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
     {
       var logType = Task.FromResult(new LogType());
       repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
-      var input = new ReadIn { Id = null };
+      string id = null;
       
-      var result = read.Execute(input);
+      var result = read.Execute(id);
 
-      Assert.That(result.Data.Result, Is.Not.Null);
+      Assert.That(result.Result, Is.Not.Null);
     }
 
     [Test]
@@ -43,10 +43,10 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
       var logType = Task.FromResult(new LogType { Id = "abcdefg" });
       repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
       
-      var input = new ReadIn { Id = "abcdefg" };
-      var result = read.Execute(input);
+      string id = "abcdefg";
+      var result = read.Execute(id);
 
-      Assert.That(result.Data.Result.Id, Is.EqualTo("abcdefg"));
+      Assert.That(result.Result.Id, Is.EqualTo("abcdefg"));
     }
   }
 }

@@ -7,6 +7,6 @@ namespace com.github.olo42.SAROnion.Core.Application
 {
   public interface IRead<TInput, TOutput>
   {
-    TOutput Execute(TInput input);
+    Task<TOutput> Execute(TInput input);
   }
 }
