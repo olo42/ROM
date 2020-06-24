@@ -5,7 +5,7 @@ using Moq;
 using NUnit.Framework;
 using com.github.olo42.SAROnion.Core.Application;
 using com.github.olo42.SAROnion.Core.Domain;
-using com.github.olo42.SAROnion.Core.Application.Log.Type;
+using com.github.olo42.SAROnion.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
 {

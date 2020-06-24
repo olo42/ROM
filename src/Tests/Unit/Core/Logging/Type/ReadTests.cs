@@ -8,7 +8,7 @@ using com.github.olo42.SAROnion.Core.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using com.github.olo42.SAROnion.Core.Application.Log.Type;
+using com.github.olo42.SAROnion.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
 {

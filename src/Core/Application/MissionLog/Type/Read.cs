@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using com.github.olo42.SAROnion.Core.Domain;
 
-namespace com.github.olo42.SAROnion.Core.Application.Log.Type
+namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
 {
   public class Read : IRead<ReadIn, ReadOut>
   { 
