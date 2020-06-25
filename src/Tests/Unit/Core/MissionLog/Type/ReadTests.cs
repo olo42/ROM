@@ -37,8 +37,8 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
       Assert.That(result.Result, Is.Not.Null);
     }
 
-    [Test]
-    public void ReturnsLogTypeWithInputId()
+    [TestCase]
+    public void ReturnForSpecificId()
     {
       var logType = Task.FromResult(new LogType { Id = "abcdefg" });
       repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
