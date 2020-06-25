@@ -29,7 +29,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
     public void ReadLogTypeObject()
     {
       var logType = Task.FromResult(new LogType());
-      repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
+      repository.Setup(x => x.ReadAsync(It.IsAny<string>())).Returns(logType);
       string id = null;
       
       var result = read.Execute(id);
@@ -41,7 +41,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
     public void ReturnForSpecificId()
     {
       var logType = Task.FromResult(new LogType { Id = "abcdefg" });
-      repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
+      repository.Setup(x => x.ReadAsync(It.IsAny<string>())).Returns(logType);
       
       string id = "abcdefg";
       var result = read.Execute(id);

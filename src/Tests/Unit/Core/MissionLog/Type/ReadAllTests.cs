@@ -30,7 +30,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
     {
       var logTypes = new List<LogType>{ new LogType(), new LogType() } as IEnumerable<LogType>;
       var logTypeTask = Task.FromResult(logTypes);
-      repository.Setup(x => x.Read()).Returns(logTypeTask);
+      repository.Setup(x => x.ReadAsync()).Returns(logTypeTask);
 
       var result = readAll.Execute();
 

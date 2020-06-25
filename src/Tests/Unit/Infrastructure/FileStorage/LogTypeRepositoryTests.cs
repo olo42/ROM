@@ -41,12 +41,10 @@ namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
     public async Task Write_SerializesAsync()
     {
       var logType = new LogType { Id = "abcdefg", Name = "My First LogType" };
-
-      await this.repository.Write(logType);
+      await this.repository.WriteAsync(logType);
 
       var content = GetFileContent(this.filePath);
       var expectedJsonString = "[{\"Name\":\"My First LogType\",\"Id\":\"abcdefg\"}]";  
-
       Assert.That(content, Is.EqualTo(expectedJsonString));
     }
 
@@ -55,11 +53,11 @@ namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
     {
       var origin = new List<LogType> { new LogType { Id = "abcdefg", Name = "My First LogType" } };
       SerializeToFile(origin);
-
+      
       var update = new LogType { Id = "abcdefg", Name = "My Updated LogType" };
-      await this.repository.Write(update);
+      await this.repository.WriteAsync(update);
+      
       string content = GetFileContent(this.filePath);
-
       var expectedJsonString = "[{\"Name\":\"My Updated LogType\",\"Id\":\"abcdefg\"}]";
       Assert.That(content, Is.EqualTo(expectedJsonString));
     }

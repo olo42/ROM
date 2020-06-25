@@ -15,14 +15,14 @@ namespace com.github.olo42.SAROnion.Infrastructure.FileStorage
   {
     public LogTypeRepository(string directoryPath) : base(directoryPath) { }
 
-    public override async Task<LogType> Read(string id)
+    public override async Task<LogType> ReadAsync(string id)
     {
-      var logTypes = await this.Read();
+      var logTypes = await this.ReadAsync();
 
       return logTypes.ToList().Find(x => x.Id == id);
     }
 
-    public override async Task Write(LogType input)
+    public override async Task WriteAsync(LogType input)
     {
       var logTypes = await AddOrUpdateAsync(input);
       var json = JsonSerializer.Serialize(logTypes);
@@ -31,7 +31,7 @@ namespace com.github.olo42.SAROnion.Infrastructure.FileStorage
 
     private async Task<List<LogType>> AddOrUpdateAsync(LogType input)
     {
-      var logTypes = (await this.Read()).ToList();
+      var logTypes = (await this.ReadAsync()).ToList();
       var origin = logTypes.Find(x => x.Id == input.Id);
 
       if (origin == null)

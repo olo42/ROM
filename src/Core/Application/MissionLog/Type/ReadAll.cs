@@ -19,7 +19,7 @@ namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
 
     public Task<IEnumerable<LogType>> Execute()
     {
-      return this.repository.Read();
+      return this.repository.ReadAsync();
     }
   }
 }

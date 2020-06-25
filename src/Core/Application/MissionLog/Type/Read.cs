@@ -17,7 +17,7 @@ namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
 
     public Task<LogType> Execute(string id)
     {
-      return repository.Read(id);
+      return repository.ReadAsync(id);
     }
   }
 }

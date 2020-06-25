@@ -24,7 +24,7 @@ namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
       logType.Id = Guid.NewGuid().ToString();
       logType.Name = input.Name;
 
-      repository.Write(logType);
+      repository.WriteAsync(logType);
 
       return Task.FromResult(logType);
     }

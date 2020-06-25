@@ -8,8 +8,8 @@ namespace com.github.olo42.SAROnion.Core.Application
 {
   public interface IRepository<T>
   {
-    Task Write(T input);
-    Task<T> Read(string id);
-    Task<IEnumerable<T>> Read();
+    Task WriteAsync(T input);
+    Task<T> ReadAsync(string id);
+    Task<IEnumerable<T>> ReadAsync();
   }
 }

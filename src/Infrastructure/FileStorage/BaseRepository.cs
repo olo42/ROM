@@ -25,16 +25,16 @@ namespace com.github.olo42.SAROnion.Infrastructure.FileStorage
 
       this.directoryPath = directoryPath;
     }
-    public abstract Task<T> Read(string id);
+    public abstract Task<T> ReadAsync(string id);
 
-    public Task<IEnumerable<T>> Read()
+    public Task<IEnumerable<T>> ReadAsync()
     {
       var objects = this.Deserialize();
       
       return Task.FromResult(objects);
     }
 
-    public abstract Task Write(T input);
+    public abstract Task WriteAsync(T input);
 
     protected string GetFilePath()
     {

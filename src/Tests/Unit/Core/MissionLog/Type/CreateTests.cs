@@ -63,7 +63,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
       var input = new CreateIn { Name = "Action 1" };
       var result = create.Execute(input).Result;
 
-      logTypeRepository.Verify(x => x.Write(result), Times.Once);
+      logTypeRepository.Verify(x => x.WriteAsync(result), Times.Once);
 
     }
 
