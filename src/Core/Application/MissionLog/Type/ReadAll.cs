@@ -8,7 +8,7 @@ using com.github.olo42.SAROnion.Core.Domain;
 
 namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
 {
-  public class ReadAll : IRead<ReadAllIn, IEnumerable<LogType>>
+  public class ReadAll : IReadAll<IEnumerable<LogType>>
   {
     private IRepository<LogType> repository;
 
@@ -17,7 +17,7 @@ namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
       this.repository = repository;
     }
 
-    public Task<IEnumerable<LogType>> Execute(ReadAllIn input)
+    public Task<IEnumerable<LogType>> Execute()
     {
       return this.repository.Read();
     }

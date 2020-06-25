@@ -15,7 +15,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
   [TestFixture]
   public class ReadAllTests
   {
-    private IRead<ReadAllIn, IEnumerable<LogType>> readAll;
+    private IReadAll<IEnumerable<LogType>> readAll;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
@@ -32,18 +32,9 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
       var logTypeTask = Task.FromResult(logTypes);
       repository.Setup(x => x.Read()).Returns(logTypeTask);
 
-      var readAllIn = new ReadAllIn();
-      var result = readAll.Execute(readAllIn);
+      var result = readAll.Execute();
 
       Assert.That(result.Result.Count, Is.EqualTo(2));
-    }
-
-    [Test]
-    public void AcceptNullAsInput()
-    {
-      ReadAllIn input = null;
-
-      Assert.That((() => readAll.Execute(input)), Throws.Nothing);
     }
   }
 }
