@@ -15,38 +15,35 @@ namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
   [TestFixture]
   public class ReadAllTests
   {
-    private IRead<string, LogType> read;
+    private IRead<ReadAllIn, IEnumerable<LogType>> readAll;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
     public void Setup()
     {
       repository = new Mock<IRepository<LogType>>();
-      read = new Read(repository.Object);
+      readAll = new ReadAll(repository.Object);
     }
 
     [Test]
-    public void ReadLogTypeObject()
+    public void ReadLogTypeObjects()
     {
-      var logType = Task.FromResult(new LogType());
-      repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
-      string id = null;
-      
-      var result = read.Execute(id);
+      var logTypes = new List<LogType>{ new LogType(), new LogType() } as IEnumerable<LogType>;
+      var logTypeTask = Task.FromResult(logTypes);
+      repository.Setup(x => x.Read()).Returns(logTypeTask);
 
-      Assert.That(result.Result, Is.Not.Null);
+      var readAllIn = new ReadAllIn();
+      var result = readAll.Execute(readAllIn);
+
+      Assert.That(result.Result.Count, Is.EqualTo(2));
     }
 
     [Test]
-    public void ReturnsLogTypeWithInputId()
+    public void AcceptNullAsInput()
     {
-      var logType = Task.FromResult(new LogType { Id = "abcdefg" });
-      repository.Setup(x => x.Read(It.IsAny<string>())).Returns(logType);
-      
-      string id = "abcdefg";
-      var result = read.Execute(id);
+      ReadAllIn input = null;
 
-      Assert.That(result.Result.Id, Is.EqualTo("abcdefg"));
+      Assert.That((() => readAll.Execute(input)), Throws.Nothing);
     }
   }
 }
