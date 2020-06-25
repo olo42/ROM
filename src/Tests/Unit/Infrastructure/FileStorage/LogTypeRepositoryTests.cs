@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using com.github.olo42.SAROnion.Core.Domain;
@@ -21,7 +22,7 @@ namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
     public void Setup()
     {
       var path = Path.Combine(Path.GetTempPath(), "FileStorage");
-      if(!Directory.Exists(path)) 
+      if (!Directory.Exists(path))
         Directory.CreateDirectory(path);
 
       repository = new LogTypeRepository(path);
@@ -33,8 +34,8 @@ namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
     public void TearDown()
     {
       var path = Path.Combine(Path.GetTempPath(), "FileStorage");
-      if(Directory.Exists(path)) {}
-        Directory.Delete(path, true);
+      if (Directory.Exists(path)) { }
+      Directory.Delete(path, true);
     }
 
     [Test]
@@ -44,8 +45,8 @@ namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
       await this.repository.WriteAsync(logType);
 
       var content = GetFileContent(this.filePath);
-      var expectedJsonString = "[{\"Name\":\"My First LogType\",\"Id\":\"abcdefg\"}]";  
-      Assert.That(content, Is.EqualTo(expectedJsonString));
+      var expected = "[{\"Name\":\"My First LogType\",\"Id\":\"abcdefg\"}]";
+      Assert.That(content, Is.EqualTo(expected));
     }
 
     [Test]
@@ -53,13 +54,48 @@ namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
     {
       var origin = new List<LogType> { new LogType { Id = "abcdefg", Name = "My First LogType" } };
       SerializeToFile(origin);
-      
+
       var update = new LogType { Id = "abcdefg", Name = "My Updated LogType" };
       await this.repository.WriteAsync(update);
-      
+
       string content = GetFileContent(this.filePath);
-      var expectedJsonString = "[{\"Name\":\"My Updated LogType\",\"Id\":\"abcdefg\"}]";
-      Assert.That(content, Is.EqualTo(expectedJsonString));
+      var expected = "[{\"Name\":\"My Updated LogType\",\"Id\":\"abcdefg\"}]";
+      Assert.That(content, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public async Task ReadAll()
+    {
+      var origin = new List<LogType>
+      {
+        new LogType { Id = "1", Name = "First LogType" },
+        new LogType { Id = "2", Name = "Second LogType" }
+      };
+
+      SerializeToFile(origin);
+
+      var result = (await this.repository.ReadAsync()).ToList();
+
+      Assert.That(result.Count(), Is.EqualTo(2));
+      Assert.That(result.Exists(x => x.Id == "1"), Is.True);
+      Assert.That(result.Exists(x => x.Id == "2"), Is.True);
+
+    }
+
+    [Test]
+    public async Task ReadOne()
+    {
+      var origin = new List<LogType>
+      {
+        new LogType { Id = "1", Name = "First LogType" },
+        new LogType { Id = "2", Name = "Second LogType" }
+      };
+
+      SerializeToFile(origin);
+
+      var result = (await this.repository.ReadAsync("1"));
+
+      Assert.That(result.Id, Is.EqualTo("1"));
     }
 
     private string GetFileContent(string path)
