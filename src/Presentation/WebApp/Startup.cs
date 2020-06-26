@@ -25,6 +25,7 @@ namespace com.github.olo42.SAROnion.Presentation.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddApplicationServices();
 
             services.AddDbContext<none>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("none")));
