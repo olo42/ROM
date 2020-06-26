@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
-namespace WebApp
+namespace com.github.olo42.SAROnion.Presentation.WebApp
 {
     public class Startup
     {
@@ -24,6 +25,9 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<none>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("none")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

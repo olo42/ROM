@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace WebApp
+namespace com.github.olo42.SAROnion.Presentation.WebApp
 {
     public class Program
     {
