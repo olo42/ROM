@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using com.github.olo42.ROM.Presentation.WebApp.Data;
 using com.github.olo42.ROM.Core.Application;
 using AutoMapper;
 
@@ -10,12 +8,12 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class DetailsModel : PageModel
   {
-    private readonly IRepository<Core.Domain.LogType> _repository;
+    private readonly IRead<Identifier, Core.Domain.LogType> _readAction;
     private readonly IMapper _mapper;
 
-    public DetailsModel(IRepository<Core.Domain.LogType> repository, IMapper mapper)
+    public DetailsModel(IRead<Identifier, Core.Domain.LogType> readAction, IMapper mapper)
     {
-      _repository = repository;
+      _readAction = readAction;
       _mapper = mapper;
     }
 
@@ -28,7 +26,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
         return NotFound();
       }
 
-      var logType = await _repository.ReadAsync(id);
+      var logType = await _readAction.Execute(new Identifier(id));
       if (logType == null)
       {
         return NotFound();

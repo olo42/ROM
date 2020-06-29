@@ -30,6 +30,17 @@ namespace com.github.olo42.ROM.Infrastructure.FileStorage
       await File.WriteAllTextAsync(base.GetFilePath(), json);
     }
 
+    public override async Task Delete(string id)
+    {
+      var logTypes = (await this.ReadAsync()).ToList();
+      var logType = logTypes.Find(x => x.Id == id);
+      if (logType != null)
+        logTypes.Remove(logType);
+
+      var json = JsonSerializer.Serialize(logTypes);
+      await File.WriteAllTextAsync(base.GetFilePath(), json);
+    }
+
     private async Task<List<LogType>> AddOrUpdateAsync(LogType input)
     {
       var logTypes = (await this.ReadAsync()).ToList();

@@ -5,17 +5,18 @@ using com.github.olo42.ROM.Presentation.WebApp.Data;
 using com.github.olo42.ROM.Core.Application;
 using AutoMapper;
 using System;
+using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class CreateModel : PageModel
   {
-    private readonly IRepository<Core.Domain.LogType> _repository;
+    private readonly ICreate<Core.Domain.LogType> _createAction;
     private readonly IMapper _mapper;
 
-    public CreateModel(IRepository<Core.Domain.LogType> repository, IMapper mapper)
+    public CreateModel(ICreate<Core.Domain.LogType> createAction , IMapper mapper)
     {
-      _repository = repository;
+      _createAction = createAction;
       this._mapper = mapper;
     }
 
@@ -37,9 +38,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
       }
 
       var logType = _mapper.Map<Core.Domain.LogType>(LogTypeViewModel);
-      logType.Id = Guid.NewGuid().ToString();
-
-      await _repository.WriteAsync(logType);
+      await _createAction.Execute(logType);
 
       return RedirectToPage("./Index");
     }

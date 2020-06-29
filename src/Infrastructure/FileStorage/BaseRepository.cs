@@ -26,9 +26,11 @@ namespace com.github.olo42.ROM.Infrastructure.FileStorage
     public Task<IEnumerable<T>> ReadAsync()
     {
       var objects = this.Deserialize();
-      
+
       return Task.FromResult(objects);
     }
+
+    public abstract Task Delete(string id);
 
     public abstract Task WriteAsync(T input);
 

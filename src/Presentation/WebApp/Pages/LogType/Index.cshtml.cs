@@ -9,12 +9,12 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class IndexModel : PageModel
   {
-    private readonly IRepository<Core.Domain.LogType> _repository;
+    private readonly IReadAll<IEnumerable<Core.Domain.LogType>> _readAllAction;
     private readonly IMapper _mapper;
 
-    public IndexModel(IRepository<Core.Domain.LogType> repository, IMapper mapper)
+    public IndexModel(IReadAll<IEnumerable<Core.Domain.LogType>> readAllAction, IMapper mapper)
     {
-      _repository = repository;
+      _readAllAction = readAllAction;
       _mapper = mapper;
     }
 
@@ -22,7 +22,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 
     public async Task OnGetAsync()
     {
-      var logTypes = await _repository.ReadAsync();
+      var logTypes = await _readAllAction.Execute();
       var logTypesOrdered = logTypes.OrderBy(x => x.Name);
       LogTypeViewModel = _mapper.Map<IList<LogTypeViewModel>>(logTypesOrdered);
     }

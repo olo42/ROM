@@ -5,9 +5,7 @@ using Moq;
 using NUnit.Framework;
 using com.github.olo42.ROM.Core.Application;
 using com.github.olo42.ROM.Core.Domain;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
@@ -15,7 +13,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
   [TestFixture]
   public class ReadTests
   {
-    private IRead<ReadIn, LogType> read;
+    private IRead<Identifier, LogType> read;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
@@ -30,7 +28,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     {
       var logType = Task.FromResult(new LogType());
       repository.Setup(x => x.ReadAsync(It.IsAny<string>())).Returns(logType);
-      var input = new ReadIn { Id = "1" };
+      var input = new Identifier("1");
       
       var result = read.Execute(input);
 
@@ -43,7 +41,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
       var logType = Task.FromResult(new LogType { Id = "abcdefg" });
       repository.Setup(x => x.ReadAsync(It.IsAny<string>())).Returns(logType);
 
-      var input = new ReadIn { Id = "abcdefg" };
+      var input = new Identifier("abcdefg");
       var result = read.Execute(input);
 
       Assert.That(result.Result.Id, Is.EqualTo("abcdefg"));

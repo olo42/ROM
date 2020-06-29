@@ -11,5 +11,6 @@ namespace com.github.olo42.ROM.Core.Application
     Task WriteAsync(T input);
     Task<T> ReadAsync(string id);
     Task<IEnumerable<T>> ReadAsync();
+    Task Delete(string id);
   }
 }

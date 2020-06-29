@@ -8,12 +8,17 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class EditModel : PageModel
   {
-    private readonly IRepository<Core.Domain.LogType> _repository;
+    private readonly IRead<Identifier, Core.Domain.LogType> _readAction;
+    private readonly IUpdate<Core.Domain.LogType> _updateAction;
     private readonly IMapper _mapper;
 
-    public EditModel(IRepository<Core.Domain.LogType> repository, IMapper mapper)
+    public EditModel(
+      IRead<Identifier, Core.Domain.LogType> readAction,
+      IUpdate<Core.Domain.LogType> updateAction,
+      IMapper mapper)
     {
-      _repository = repository;
+      _readAction = readAction;
+      _updateAction = updateAction;
       _mapper = mapper;
     }
 
@@ -27,12 +32,9 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
         return NotFound();
       }
 
-      var logType = await _repository.ReadAsync(id);
-
+      var logType = await _readAction.Execute(new Identifier(id));
       if (logType == null)
-      {
         return NotFound();
-      }
 
       LogTypeViewModel = _mapper.Map<LogTypeViewModel>(logType);
       return Page();
@@ -48,7 +50,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
       }
 
       var logType = _mapper.Map<Core.Domain.LogType>(LogTypeViewModel);
-      await _repository.WriteAsync(logType);
+      await _updateAction.Execute(logType);
 
       return RedirectToPage("./Index");
     }

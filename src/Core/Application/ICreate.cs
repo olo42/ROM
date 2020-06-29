@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public interface ICreate<TInput, TOutput>
+  public interface ICreate<TInput>
   {
-    Task<TOutput> Execute(TInput input);
+    Task Execute(TInput input);
   }
 }
