@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/SARonion.sln",
+                "${workspaceFolder}/ROM.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -39,7 +39,7 @@
             },
             "args": [
                 "test",
-                "${workspaceFolder}/SARonion.sln",
+                "${workspaceFolder}/ROM.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary",
                 "-p:CollectCoverage=true",
