@@ -329,9 +329,7 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
-# VSCode folder 
-/src/WebApp/SAROM/wwwroot/operations/*
-/src/Olo42.SAROM.WebApp/wwwroot/operations/*
+# VSCode folder
 /data
 
 appsettings.json
