@@ -3,7 +3,7 @@
 
 using System;
 
-namespace com.github.olo42.SAROnion.Core.Domain
+namespace com.github.olo42.ROM.Core.Domain
 {
   public class LogEntry : BaseEntity
   {

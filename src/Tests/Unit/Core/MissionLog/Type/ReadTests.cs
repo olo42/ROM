@@ -3,14 +3,14 @@
 
 using Moq;
 using NUnit.Framework;
-using com.github.olo42.SAROnion.Core.Application;
-using com.github.olo42.SAROnion.Core.Domain;
+using com.github.olo42.ROM.Core.Application;
+using com.github.olo42.ROM.Core.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using com.github.olo42.SAROnion.Core.Application.MissionLog.Type;
+using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 
-namespace com.github.olo42.SAROnion.Test.Unit.Core.Log.Type
+namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
 {
   [TestFixture]
   public class ReadTests

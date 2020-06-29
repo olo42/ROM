@@ -3,7 +3,7 @@
 
 using System.Threading.Tasks;
 
-namespace com.github.olo42.SAROnion.Core.Application
+namespace com.github.olo42.ROM.Core.Application
 {
   public interface ICreate<TInput, TOutput>
   {

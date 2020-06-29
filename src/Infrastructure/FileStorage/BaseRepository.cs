@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-using com.github.olo42.SAROnion.Core.Application;
+using com.github.olo42.ROM.Core.Application;
 
-namespace com.github.olo42.SAROnion.Infrastructure.FileStorage
+namespace com.github.olo42.ROM.Infrastructure.FileStorage
 {
   public abstract class BaseRepository<T> : IRepository<T>
   {

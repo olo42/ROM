@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Threading.Tasks;
-using com.github.olo42.SAROnion.Core.Domain;
+using com.github.olo42.ROM.Core.Domain;
 
-namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
+namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
 {
   public class Read : IRead<string, LogType>
   { 

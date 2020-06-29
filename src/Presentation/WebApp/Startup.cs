@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 
-namespace com.github.olo42.SAROnion.Presentation.WebApp
+namespace com.github.olo42.ROM.Presentation.WebApp
 {
     public class Startup
     {

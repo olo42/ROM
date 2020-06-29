@@ -7,9 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using com.github.olo42.SAROnion.Core.Domain;
+using com.github.olo42.ROM.Core.Domain;
 
-namespace com.github.olo42.SAROnion.Infrastructure.FileStorage
+namespace com.github.olo42.ROM.Infrastructure.FileStorage
 {
   public class LogTypeRepository : BaseRepository<LogType>
   {

@@ -6,11 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using com.github.olo42.SAROnion.Core.Domain;
-using com.github.olo42.SAROnion.Infrastructure.FileStorage;
+using com.github.olo42.ROM.Core.Domain;
+using com.github.olo42.ROM.Infrastructure.FileStorage;
 using NUnit.Framework;
 
-namespace com.github.olo42.SAROnion.Test.Unit.Infrastructure.FileStorage
+namespace com.github.olo42.ROM.Test.Unit.Infrastructure.FileStorage
 {
   [TestFixture]
   public class LogTypeRepositoryTests

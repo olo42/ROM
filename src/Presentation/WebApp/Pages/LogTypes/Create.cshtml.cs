@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using com.github.olo42.SAROnion.Core.Domain;
-using com.github.olo42.SAROnion.Core.Application;
+using com.github.olo42.ROM.Core.Domain;
+using com.github.olo42.ROM.Core.Application;
 
-namespace com.github.olo42.SAROnion.Presentation.WebApp.Pages.LogTypes
+namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogTypes
 {
   public class CreateModel : PageModel
     {

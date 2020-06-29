@@ -3,10 +3,10 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using com.github.olo42.SAROnion.Core.Application;
-using com.github.olo42.SAROnion.Core.Domain;
+using com.github.olo42.ROM.Core.Application;
+using com.github.olo42.ROM.Core.Domain;
 
-namespace com.github.olo42.SAROnion.Core.Application.MissionLog.Type
+namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
 {
   public class ReadAll : IReadAll<IEnumerable<LogType>>
   {
