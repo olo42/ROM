@@ -6,7 +6,7 @@ using com.github.olo42.ROM.Core.Domain;
 
 namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
 {
-  public class Read : IRead<string, LogType>
+  public class Read : IRead<ReadIn, LogType>
   { 
     private IRepository<LogType> repository;
 
@@ -15,9 +15,9 @@ namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
       this.repository = repository;
     }
 
-    public Task<LogType> Execute(string id)
+    public Task<LogType> Execute(ReadIn input)
     {
-      return repository.ReadAsync(id);
+      return repository.ReadAsync(input.Id);
     }
   }
 }

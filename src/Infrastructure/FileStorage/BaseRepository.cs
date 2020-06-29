@@ -8,22 +8,18 @@ using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using com.github.olo42.ROM.Core.Application;
+using Microsoft.Extensions.Configuration;
 
 namespace com.github.olo42.ROM.Infrastructure.FileStorage
 {
   public abstract class BaseRepository<T> : IRepository<T>
   {
     private const string FILE_EXTENSION = ".dat";
-    private readonly string directoryPath;
+    private readonly IConfiguration _configuration;
 
-    public BaseRepository(string directoryPath)
+    public BaseRepository(IConfiguration configuration)
     {
-      if (string.IsNullOrEmpty(directoryPath))
-      {
-        throw new ArgumentException($"'{nameof(directoryPath)}' cannot be null or empty", nameof(directoryPath));
-      }
-
-      this.directoryPath = directoryPath;
+      _configuration = configuration;
     }
     public abstract Task<T> ReadAsync(string id);
 
@@ -40,7 +36,7 @@ namespace com.github.olo42.ROM.Infrastructure.FileStorage
     {
       var name = this.GetType().Name;
 
-      return Path.Combine(this.directoryPath, name + FILE_EXTENSION);
+      return Path.Combine(_configuration["ApplicationDataDir"], name + FILE_EXTENSION);
     }
 
     protected IEnumerable<T> Deserialize()

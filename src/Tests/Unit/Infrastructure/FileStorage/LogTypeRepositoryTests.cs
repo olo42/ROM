@@ -8,7 +8,10 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using com.github.olo42.ROM.Core.Domain;
 using com.github.olo42.ROM.Infrastructure.FileStorage;
+using Microsoft.Extensions.Configuration;
+using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace com.github.olo42.ROM.Test.Unit.Infrastructure.FileStorage
 {
@@ -25,7 +28,9 @@ namespace com.github.olo42.ROM.Test.Unit.Infrastructure.FileStorage
       if (!Directory.Exists(path))
         Directory.CreateDirectory(path);
 
-      repository = new LogTypeRepository(path);
+      var configuration = new Mock<IConfiguration>();
+      configuration.Setup(x => x["ApplicationDataDir"]).Returns(path);
+      repository = new LogTypeRepository(configuration.Object);
 
       this.filePath = filePath = Path.Combine(path, this.repository.GetType().Name + ".dat");
     }

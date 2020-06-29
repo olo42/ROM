@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using com.github.olo42.ROM.Core.Domain;
+using Microsoft.Extensions.Configuration;
 
 namespace com.github.olo42.ROM.Infrastructure.FileStorage
 {
   public class LogTypeRepository : BaseRepository<LogType>
   {
-    public LogTypeRepository(string directoryPath) : base(directoryPath) { }
+    public LogTypeRepository(IConfiguration configuration) : base(configuration) { }
 
     public override async Task<LogType> ReadAsync(string id)
     {

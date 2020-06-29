@@ -15,7 +15,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
   [TestFixture]
   public class ReadTests
   {
-    private IRead<string, LogType> read;
+    private IRead<ReadIn, LogType> read;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
@@ -30,9 +30,9 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     {
       var logType = Task.FromResult(new LogType());
       repository.Setup(x => x.ReadAsync(It.IsAny<string>())).Returns(logType);
-      string id = null;
+      var input = new ReadIn { Id = "1" };
       
-      var result = read.Execute(id);
+      var result = read.Execute(input);
 
       Assert.That(result.Result, Is.Not.Null);
     }
@@ -42,9 +42,9 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     {
       var logType = Task.FromResult(new LogType { Id = "abcdefg" });
       repository.Setup(x => x.ReadAsync(It.IsAny<string>())).Returns(logType);
-      
-      string id = "abcdefg";
-      var result = read.Execute(id);
+
+      var input = new ReadIn { Id = "abcdefg" };
+      var result = read.Execute(input);
 
       Assert.That(result.Result.Id, Is.EqualTo("abcdefg"));
     }
