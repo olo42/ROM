@@ -14,16 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FunctionViewModel[0].Name)
+                @Html.DisplayNameFor(model => model.ViewModel[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FunctionViewModel[0].Description)
+                @Html.DisplayNameFor(model => model.ViewModel[0].Description)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.FunctionViewModel) {
+@foreach (var item in Model.ViewModel) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

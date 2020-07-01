@@ -13,16 +13,16 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="FunctionViewModel.Id" />
+            <input type="hidden" asp-for="ViewModel.Id" />
             <div class="form-group">
-                <label asp-for="FunctionViewModel.Name" class="control-label"></label>
-                <input asp-for="FunctionViewModel.Name" class="form-control" />
-                <span asp-validation-for="FunctionViewModel.Name" class="text-danger"></span>
+                <label asp-for="ViewModel.Name" class="control-label"></label>
+                <input asp-for="ViewModel.Name" class="form-control" />
+                <span asp-validation-for="ViewModel.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FunctionViewModel.Description" class="control-label"></label>
-                <input asp-for="FunctionViewModel.Description" class="form-control" />
-                <span asp-validation-for="FunctionViewModel.Description" class="text-danger"></span>
+                <label asp-for="ViewModel.Description" class="control-label"></label>
+                <input asp-for="ViewModel.Description" class="form-control" />
+                <span asp-validation-for="ViewModel.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
