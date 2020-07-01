@@ -7,8 +7,8 @@ namespace com.github.olo42.ROM.Presentation.WebApp
   {
     public MappingsProfile()
     {
-      CreateMap<LogType, Pages.LogType.LogTypeViewModel>().ReverseMap();
-      CreateMap<Function, Pages.Function.ViewModel>().ReverseMap();
+      // CreateMap<LogType, Pages.LogType.LogTypeViewModel>().ReverseMap();
+      // CreateMap<Function, Pages.Function.ViewModel>().ReverseMap();
     }
   }
 }
