@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿// Copyright (c) Oliver Appel. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using com.github.olo42.ROM.Core.Application;
@@ -28,9 +31,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
     public async Task<IActionResult> OnGetAsync(string id)
     {
       if (id == null)
-      {
         return NotFound();
-      }
 
       var logType = await _readAction.Execute(new Identifier(id));
       if (logType == null)
