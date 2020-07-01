@@ -30,7 +30,6 @@ namespace com.github.olo42.ROM.Core.Application.Missions
       mission.Log = new List<LogEntry>();
       mission.Units = new List<Unit>();
       mission.State = EMissionState.Runnig;
-      mission.CreationDateTime = DateTime.Now;
     }
   }
 }
