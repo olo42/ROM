@@ -19,7 +19,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     public void Setup()
     {
       logTypeRepository = new Mock<IRepository<LogType>>();
-      create = new BaseCreateAction<LogType>(logTypeRepository.Object);
+      create = new BaseCreate<LogType>(logTypeRepository.Object);
     }
 
     [Test]
@@ -46,7 +46,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     {
       IRepository<LogType> repository = null;
 
-      Assert.That(() => new BaseCreateAction<LogType>(repository), Throws.ArgumentNullException);
+      Assert.That(() => new BaseCreate<LogType>(repository), Throws.ArgumentNullException);
     }
   }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public class BaseDeleteAction<T> : IDelete<T> where T : IIdentifiable
+  public class BaseDelete<T> : IDelete<T> where T : IIdentifiable
   {
     protected readonly IRepository<T> _repository;
 
-    public BaseDeleteAction(IRepository<T> repository)
+    public BaseDelete(IRepository<T> repository)
     {
       _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }

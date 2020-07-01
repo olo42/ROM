@@ -7,11 +7,11 @@ using com.github.olo42.ROM.Core.Domain;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public class BaseReadAction<T> : IRead<T> where T : IIdentifiable
+  public class BaseRead<T> : IRead<T> where T : IIdentifiable
   { 
     protected readonly IRepository<T> repository;
 
-    public BaseReadAction(IRepository<T> repository)
+    public BaseRead(IRepository<T> repository)
     {
       this.repository = repository;
     }

@@ -7,11 +7,11 @@ using com.github.olo42.ROM.Core.Domain;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public class BaseCreateAction<T> : ICreate<T> where T : IIdentifiable
+  public class BaseCreate<T> : ICreate<T> where T : IIdentifiable
   {
     protected readonly IRepository<T> repository;
 
-    public BaseCreateAction(IRepository<T> repository)
+    public BaseCreate(IRepository<T> repository)
     {
       this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }

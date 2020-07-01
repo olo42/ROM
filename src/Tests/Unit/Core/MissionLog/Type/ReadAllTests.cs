@@ -14,14 +14,14 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
   [TestFixture]
   public class ReadAllTests
   {
-    private IRead<LogType> readAction;
+    private IRead<LogType> read;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
     public void Setup()
     {
       repository = new Mock<IRepository<LogType>>();
-      readAction = new BaseReadAction<LogType>(repository.Object);
+      read = new BaseRead<LogType>(repository.Object);
     }
 
     [Test]
@@ -31,7 +31,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
       var logTypeTask = Task.FromResult(logTypes);
       repository.Setup(x => x.ReadAsync()).Returns(logTypeTask);
 
-      var result = readAction.Execute();
+      var result = read.Execute();
 
       Assert.That(result.Result.Count, Is.EqualTo(2));
     }

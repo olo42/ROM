@@ -19,7 +19,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     public void Setup()
     {
       repository = new Mock<IRepository<LogType>>();
-      read = new BaseReadAction<LogType>(repository.Object);
+      read = new BaseRead<LogType>(repository.Object);
     }
 
     [Test]

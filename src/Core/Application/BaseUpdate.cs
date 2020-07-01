@@ -7,11 +7,11 @@ using com.github.olo42.ROM.Core.Domain;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public class BaseUpdateAction<T> : IUpdate<T> where T : IIdentifiable
+  public class BaseUpdate<T> : IUpdate<T> where T : IIdentifiable
   {
     private readonly IRepository<T> repository;
 
-    public BaseUpdateAction(IRepository<T> repository)
+    public BaseUpdate(IRepository<T> repository)
     {
       this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
