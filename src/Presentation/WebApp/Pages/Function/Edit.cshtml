@@ -1,0 +1,40 @@
+﻿@page
+@model com.github.olo42.ROM.Presentation.WebApp.Pages.Function.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>FunctionViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FunctionViewModel.Id" />
+            <div class="form-group">
+                <label asp-for="FunctionViewModel.Name" class="control-label"></label>
+                <input asp-for="FunctionViewModel.Name" class="form-control" />
+                <span asp-validation-for="FunctionViewModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FunctionViewModel.Description" class="control-label"></label>
+                <input asp-for="FunctionViewModel.Description" class="form-control" />
+                <span asp-validation-for="FunctionViewModel.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
