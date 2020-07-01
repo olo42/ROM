@@ -2,17 +2,18 @@
 // Copyright (c) Oliver Appel. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using com.github.olo42.ROM.Core.Application;
+using com.github.olo42.ROM.Core.Domain;
 using Microsoft.Extensions.Configuration;
 
 namespace com.github.olo42.ROM.Infrastructure.FileStorage
 {
-  public abstract class BaseRepository<T> : IRepository<T>
+  public abstract class BaseRepository<T> : IRepository<T> where T : IIdentifiable
   {
     private const string FILE_EXTENSION = ".dat";
     private readonly IConfiguration _configuration;
@@ -21,39 +22,65 @@ namespace com.github.olo42.ROM.Infrastructure.FileStorage
     {
       _configuration = configuration;
     }
-    public abstract Task<T> ReadAsync(string id);
+
+    public async Task<T> ReadAsync(string id)
+    {
+      return (await ReadAsync()).ToList().Find(x => x.Id == id);
+    }
 
     public Task<IEnumerable<T>> ReadAsync()
     {
-      var objects = this.Deserialize();
+      var objects = new List<T>();
+      var path = GetFilePath();
 
-      return Task.FromResult(objects);
+      if (File.Exists(path))
+      {
+        var json = File.ReadAllText(path);
+        if (!string.IsNullOrWhiteSpace(json))
+        {
+          objects = (List<T>)JsonSerializer.Deserialize(json, typeof(List<T>));
+        }
+      }
+
+      return Task.FromResult(objects as IEnumerable<T>);
     }
 
-    public abstract Task Delete(string id);
-
-    public abstract Task WriteAsync(T input);
-
-    protected string GetFilePath()
+    public async Task WriteAsync(T input)
     {
-      var name = this.GetType().Name;
+      var objects = (await ReadAsync()).ToList();
+      
+      objects.Remove(objects.Find(x => x.Id == input.Id));
+      objects.Add(input);
+
+      var json = JsonSerializer.Serialize(objects);
+      var path = GetFilePath();
+      AssureFileExists(path);
+
+      await File.WriteAllTextAsync(GetFilePath(), json);
+    }
+
+    private string GetFilePath()
+    {
+      var name = GetType().Name;
 
       return Path.Combine(_configuration["ApplicationDataDir"], name + FILE_EXTENSION);
     }
 
-    protected IEnumerable<T> Deserialize()
+    private void AssureFileExists(string path)
     {
-      var path = this.GetFilePath();
-      if(!File.Exists(path))
+      if (!File.Exists(path))
       {
         File.Create(path).Dispose();
-
-        return new List<T>();
       }
-      var json = File.ReadAllText(path);
-      var objects = (IEnumerable<T>)JsonSerializer.Deserialize(json, typeof(IEnumerable<T>));
-     
-      return objects;
+    }
+
+    public async Task Delete(string id)
+    {
+      var objects = (await ReadAsync()).ToList();
+      objects.Remove(objects.Find(x => x.Id == id));
+
+      var json = JsonSerializer.Serialize(objects);
+      await File.WriteAllTextAsync(GetFilePath(), json);
     }
   }
 }

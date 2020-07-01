@@ -3,7 +3,7 @@
 
 namespace com.github.olo42.ROM.Core.Domain
 {
-  public class BaseEntity
+  public class BaseEntity : IIdentifiable
   {
     public string Id { get; set; }
   }
