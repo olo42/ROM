@@ -29,6 +29,13 @@ namespace com.github.olo42.ROM.Presentation.WebApp
       services.AddScoped<IUpdate<Function>, BaseUpdate<Function>>();
       services.AddScoped<IDelete<Function>, BaseDelete<Function>>();
 
+      // Mission
+      services.AddScoped<IRepository<Mission>, MissionRepository>();
+      services.AddScoped<ICreate<Mission>, Core.Application.Missions.Create>();
+      services.AddScoped<IRead<Mission>, BaseRead<Mission>>();
+      services.AddScoped<IUpdate<Mission>, BaseUpdate<Mission>>();
+      services.AddScoped<IDelete<Mission>, BaseDelete<Mission>>();
+
       return services;
     }
   }

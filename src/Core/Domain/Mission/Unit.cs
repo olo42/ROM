@@ -3,7 +3,7 @@
 
 namespace com.github.olo42.ROM.Core.Domain
 {
-  public class Unit
+  public class Unit : BaseEntity
   {
   }
 }
