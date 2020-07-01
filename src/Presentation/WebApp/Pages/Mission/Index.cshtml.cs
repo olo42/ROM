@@ -19,7 +19,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Mission
     public override async Task OnGetAsync()
     {
       var result = await _readAction.Execute();
-      result = result.OrderByDescending(x => x.CreationDateTime);
+      result = result.OrderByDescending(x => x.Alert.DateTime);
 
       ViewModel = _mapper.Map<IList<Core.Domain.Mission>>(result);
     }

@@ -18,6 +18,16 @@
                 <input asp-for="ViewModel.Objective" class="form-control" />
                 <span asp-validation-for="ViewModel.Objective" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="ViewModel.Alert.Number" class="control-label"></label>
+                <input asp-for="ViewModel.Alert.Number" class="form-control" />
+                <span asp-validation-for="ViewModel.Alert.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ViewModel.Alert.DateTime" class="control-label"></label>
+                <input asp-for="ViewModel.Alert.DateTime" class="form-control" />
+                <span asp-validation-for="ViewModel.Alert.DateTime" class="text-danger"></span>
+            </div>
             <input type="hidden" asp-for="ViewModel.Id" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

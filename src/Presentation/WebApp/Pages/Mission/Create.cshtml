@@ -19,6 +19,17 @@
                 <span asp-validation-for="ViewModel.Objective" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ViewModel.AlertNumber" class="control-label"></label>
+                <input asp-for="ViewModel.AlertNumber" class="form-control" />
+                <span asp-validation-for="ViewModel.AlertNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ViewModel.AlertDateTime" class="control-label"></label>
+                <input asp-for="ViewModel.AlertDateTime" class="form-control" />
+                <span asp-validation-for="ViewModel.AlertDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

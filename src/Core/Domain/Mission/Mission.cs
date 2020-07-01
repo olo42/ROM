@@ -8,6 +8,7 @@ namespace com.github.olo42.ROM.Core.Domain
 {
   public class Mission : BaseEntity
   {
+    public Alert Alert { get; set; }
     public IEnumerable<LogEntry> Log { get; set; }
     public string Objective { get; set; }
     public IEnumerable<Unit> Units { get; set; }
@@ -16,6 +17,5 @@ namespace com.github.olo42.ROM.Core.Domain
     public IEnumerable<Contact> Contacts { get; set; }
     public IEnumerable<Document> Documents { get; set; }
     public EMissionState State { get; set; }
-    public DateTime CreationDateTime{ get; set; }
   }
 }
