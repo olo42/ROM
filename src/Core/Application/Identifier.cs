@@ -7,18 +7,20 @@ namespace com.github.olo42.ROM.Core.Application
 {
   public class Identifier : IIdentifiable
   {
+    private string _id;
+
     public Identifier(string id)
     {
-      Id = GetValidId(id);
+      _id = Validate(id);
     }
 
     public string Id 
     {
-      get { return Id;  }
-      set { Id = GetValidId(value); } 
+      get { return _id;  }
+      set { _id = Validate(value); } 
     }
 
-    private static string GetValidId(string id)
+    private static string Validate(string id)
     {
       if (string.IsNullOrWhiteSpace(id))
         throw new System.ArgumentException("message", nameof(id));
