@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages
 {
-  public class BaseDeleteModel<TModel, TViewModel> : PageModel where TModel : IIdentifiable
+  public class BaseDeleteModel<TModel, TViewModel> : PageModel where TModel : IIdentifiable, IDeletable
   {
     protected readonly IRead<TModel> _readAction;
     protected readonly IDelete<TModel> _deleteAction;
@@ -48,7 +48,8 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages
       if (id == null)
         return NotFound();
 
-      await _deleteAction.Execute(new Identifier(id));
+      var result = await _readAction.Execute(new Identifier(id));
+      await _deleteAction.Execute(result);
 
       return RedirectToPage("./Index");
     }

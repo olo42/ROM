@@ -3,8 +3,9 @@
 
 namespace com.github.olo42.ROM.Core.Domain
 {
-  public class BaseEntity : IIdentifiable
+  public class BaseEntity : IIdentifiable, IDeletable
   {
     public string Id { get; set; }
+    public bool Deleted { get; set; }
   }
 }

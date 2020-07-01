@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using com.github.olo42.ROM.Core.Domain;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace com.github.olo42.ROM.Core.Application.Missions
       mission.Log = new List<LogEntry>();
       mission.Units = new List<Unit>();
       mission.State = EMissionState.Runnig;
+      mission.CreationDateTime = DateTime.Now;
     }
   }
 }
