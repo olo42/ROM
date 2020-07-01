@@ -15,7 +15,7 @@ namespace com.github.olo42.ROM.Core.Application
     {
       _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
-    public virtual async Task Execute(T input)
+    public virtual async Task Execute(IIdentifiable input)
     {
       await _repository.Delete(input.Id);
     }

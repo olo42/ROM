@@ -8,6 +8,6 @@ namespace com.github.olo42.ROM.Core.Application
 {
   public interface IDelete<T> where T : IIdentifiable
   {
-    Task Execute(T input);
+    Task Execute(IIdentifiable input);
   }
 }
