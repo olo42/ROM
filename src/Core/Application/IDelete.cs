@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public interface IDelete<T> where T : IIdentifiable
+  public interface IDelete<T> where T : IIdentifiable, IDeletable
   {
-    Task Execute(IIdentifiable input);
+    Task Execute(T input);
   }
 }

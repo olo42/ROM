@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public class BaseDelete<T> : IDelete<T> where T : IIdentifiable
+  public class BaseDelete<T> : IDelete<T> where T : IIdentifiable, IDeletable
   {
     protected readonly IRepository<T> _repository;
 
@@ -15,9 +15,10 @@ namespace com.github.olo42.ROM.Core.Application
     {
       _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
-    public virtual async Task Execute(IIdentifiable input)
+    public virtual async Task Execute(T input)
     {
-      await _repository.Delete(input.Id);
+      input.Deleted = true;
+      await _repository.WriteAsync(input);
     }
   }
 }
