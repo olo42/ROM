@@ -5,7 +5,6 @@ using Moq;
 using NUnit.Framework;
 using com.github.olo42.ROM.Core.Application;
 using com.github.olo42.ROM.Core.Domain;
-using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
@@ -20,7 +19,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     public void Setup()
     {
       logTypeRepository = new Mock<IRepository<LogType>>();
-      create = new Create(logTypeRepository.Object);
+      create = new BaseCreateAction<LogType>(logTypeRepository.Object);
     }
 
     [Test]
@@ -47,7 +46,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
     {
       IRepository<LogType> repository = null;
 
-      Assert.That(() => new Create(repository), Throws.ArgumentNullException);
+      Assert.That(() => new BaseCreateAction<LogType>(repository), Throws.ArgumentNullException);
     }
   }
 }

@@ -1,11 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using com.github.olo42.ROM.Presentation.WebApp.Data;
 using com.github.olo42.ROM.Core.Application;
 using AutoMapper;
-using System;
-using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {

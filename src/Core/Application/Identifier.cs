@@ -9,13 +9,21 @@ namespace com.github.olo42.ROM.Core.Application
   {
     public Identifier(string id)
     {
-      if (string.IsNullOrEmpty(id))
-      {
-        throw new System.ArgumentException("message", nameof(id));
-      }
-
-      Id = id;
+      Id = GetValidId(id);
     }
-    public string Id { get; }
+
+    public string Id 
+    {
+      get { return Id;  }
+      set { Id = GetValidId(value); } 
+    }
+
+    private static string GetValidId(string id)
+    {
+      if (string.IsNullOrWhiteSpace(id))
+        throw new System.ArgumentException("message", nameof(id));
+
+      return id;
+    }
   }
 }

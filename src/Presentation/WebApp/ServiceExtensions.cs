@@ -15,7 +15,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp
       
       // LogType
       services.AddScoped<IRepository<LogType>, LogTypeRepository>();
-      services.AddScoped<ICreate<LogType>, Core.Application.MissionLog.Type.Create>();
+      services.AddScoped<ICreate<LogType>, BaseCreateAction<LogType>>();
       services.AddScoped<IRead<LogType>, BaseReadAction<LogType>>();
       services.AddScoped<IUpdate<LogType>, BaseUpdateAction<LogType>>();
       services.AddScoped<IDelete<LogType>, BaseDeleteAction<LogType>>();

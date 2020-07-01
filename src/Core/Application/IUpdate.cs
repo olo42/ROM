@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace com.github.olo42.ROM.Core.Application
 {
-  public interface IUpdate<TInput>
+  public interface IUpdate<T>
   {
-    Task Execute(TInput input);
+    Task Execute(T input);
   }
 }

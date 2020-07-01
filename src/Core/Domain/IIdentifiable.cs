@@ -6,7 +6,7 @@ namespace com.github.olo42.ROM.Core.Domain
 {
   public interface IIdentifiable
   {
-    string Id { get; }
+    string Id { get; set; }
 
   }
 }
