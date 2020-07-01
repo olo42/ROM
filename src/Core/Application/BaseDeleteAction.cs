@@ -5,19 +5,19 @@ using com.github.olo42.ROM.Core.Domain;
 using System;
 using System.Threading.Tasks;
 
-namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
+namespace com.github.olo42.ROM.Core.Application
 {
-  public class Delete : IDelete<Identifier>
+  public class BaseDeleteAction<T> : IDelete<T> where T : IIdentifiable
   {
-    private readonly IRepository<LogType> _repository;
+    protected readonly IRepository<LogType> _repository;
 
-    public Delete(IRepository<LogType> repository)
+    public BaseDeleteAction(IRepository<LogType> repository)
     {
       _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
-    public async Task Execute(Identifier identifier)
+    public virtual async Task Execute(T input)
     {
-      await _repository.Delete(identifier.Id);
+      await _repository.Delete(input.Id);
     }
   }
 }

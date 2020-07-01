@@ -8,12 +8,12 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class EditModel : PageModel
   {
-    private readonly IRead<Identifier, Core.Domain.LogType> _readAction;
+    private readonly IRead<Core.Domain.LogType> _readAction;
     private readonly IUpdate<Core.Domain.LogType> _updateAction;
     private readonly IMapper _mapper;
 
     public EditModel(
-      IRead<Identifier, Core.Domain.LogType> readAction,
+      IRead<Core.Domain.LogType> readAction,
       IUpdate<Core.Domain.LogType> updateAction,
       IMapper mapper)
     {

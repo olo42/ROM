@@ -7,16 +7,11 @@ using com.github.olo42.ROM.Core.Domain;
 
 namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
 {
-  public class Create : ICreate<LogType>
+  public class Create : BaseCreateAction<LogType>
   {
-    private readonly IRepository<LogType> repository;
+    public Create(IRepository<LogType> repository) : base(repository) { }
 
-    public Create(IRepository<LogType> repository)
-    {
-      this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
-    }
-
-    public async Task Execute(LogType input)
+    public override async Task Execute(LogType input)
     {
       input = input ?? throw new ArgumentNullException(nameof(input));
 

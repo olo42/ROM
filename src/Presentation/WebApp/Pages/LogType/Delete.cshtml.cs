@@ -8,12 +8,12 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class DeleteModel : PageModel
   {
-    private readonly IRead<Identifier, Core.Domain.LogType> _readAction;
+    private readonly IRead<Core.Domain.LogType> _readAction;
     private readonly IDelete<Identifier> _deleteAction;
     private readonly IMapper _mapper;
 
     public DeleteModel(
-      IRead<Identifier, Core.Domain.LogType> readAction,
+      IRead<Core.Domain.LogType> readAction,
       IDelete<Identifier> deleteAction,
       IMapper mapper)
     {

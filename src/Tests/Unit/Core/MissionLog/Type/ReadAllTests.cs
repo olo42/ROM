@@ -8,21 +8,20 @@ using com.github.olo42.ROM.Core.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
 {
   [TestFixture]
   public class ReadAllTests
   {
-    private IReadAll<IEnumerable<LogType>> readAll;
+    private IRead<LogType> readAction;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
     public void Setup()
     {
       repository = new Mock<IRepository<LogType>>();
-      readAll = new ReadAll(repository.Object);
+      readAction = new BaseReadAction<LogType>(repository.Object);
     }
 
     [Test]
@@ -32,7 +31,7 @@ namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
       var logTypeTask = Task.FromResult(logTypes);
       repository.Setup(x => x.ReadAsync()).Returns(logTypeTask);
 
-      var result = readAll.Execute();
+      var result = readAction.Execute();
 
       Assert.That(result.Result.Count, Is.EqualTo(2));
     }

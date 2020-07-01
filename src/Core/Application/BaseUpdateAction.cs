@@ -5,18 +5,18 @@ using System;
 using System.Threading.Tasks;
 using com.github.olo42.ROM.Core.Domain;
 
-namespace com.github.olo42.ROM.Core.Application.MissionLog.Type
+namespace com.github.olo42.ROM.Core.Application
 {
-  public class Update : IUpdate<LogType>
+  public class BaseUpdateAction<T> : IUpdate<T> where T : IIdentifiable
   {
-    private readonly IRepository<LogType> repository;
+    private readonly IRepository<T> repository;
 
-    public Update(IRepository<LogType> repository)
+    public BaseUpdateAction(IRepository<T> repository)
     {
       this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
-    public async Task Execute(LogType input)
+    public async Task Execute(T input)
     {
       input = input ?? throw new ArgumentNullException(nameof(input));
 

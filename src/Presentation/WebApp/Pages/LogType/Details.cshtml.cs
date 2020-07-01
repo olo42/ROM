@@ -8,10 +8,10 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
   public class DetailsModel : PageModel
   {
-    private readonly IRead<Identifier, Core.Domain.LogType> _readAction;
+    private readonly IRead<Core.Domain.LogType> _readAction;
     private readonly IMapper _mapper;
 
-    public DetailsModel(IRead<Identifier, Core.Domain.LogType> readAction, IMapper mapper)
+    public DetailsModel(IRead<Core.Domain.LogType> readAction, IMapper mapper)
     {
       _readAction = readAction;
       _mapper = mapper;

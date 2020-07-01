@@ -6,21 +6,20 @@ using NUnit.Framework;
 using com.github.olo42.ROM.Core.Application;
 using com.github.olo42.ROM.Core.Domain;
 using System.Threading.Tasks;
-using com.github.olo42.ROM.Core.Application.MissionLog.Type;
 
 namespace com.github.olo42.ROM.Test.Unit.Core.Log.Type
 {
   [TestFixture]
   public class ReadTests
   {
-    private IRead<Identifier, LogType> read;
+    private IRead<LogType> read;
     private Mock<IRepository<LogType>> repository;
 
     [SetUp]
     public void Setup()
     {
       repository = new Mock<IRepository<LogType>>();
-      read = new Read(repository.Object);
+      read = new BaseReadAction<LogType>(repository.Object);
     }
 
     [Test]
