@@ -16,11 +16,14 @@ namespace com.github.olo42.ROM.Core.Application
       this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
-    public virtual async Task Execute(T input)
+    public virtual async Task<T> Execute(T input)
     {
       input = input ?? throw new ArgumentNullException(nameof(input));
+      input.Id = Guid.NewGuid().ToString();
 
       await repository.WriteAsync(input);
+      
+      return input;
     }
   }
 }
