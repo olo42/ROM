@@ -6,7 +6,7 @@ using com.github.olo42.ROM.Core.Application;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Function
 {
-  public class EditModel : BaseEditModel<Core.Domain.Function, ViewModel>
+  public class EditModel : BaseEditModel<Core.Domain.Function, Core.Domain.Function>
   {
     public EditModel(
       IRead<Core.Domain.Function> readAction, 

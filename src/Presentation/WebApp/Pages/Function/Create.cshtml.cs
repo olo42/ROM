@@ -6,7 +6,7 @@ using com.github.olo42.ROM.Core.Application;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Function
 {
-  public class CreateModel : BaseCreateModel<Core.Domain.Function, ViewModel>
+  public class CreateModel : BaseCreateModel<Core.Domain.Function, Core.Domain.Function>
   {
     public CreateModel(
       ICreate<Core.Domain.Function> createAction, 

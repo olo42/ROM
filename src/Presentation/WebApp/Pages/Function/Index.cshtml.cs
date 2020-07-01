@@ -9,7 +9,7 @@ using com.github.olo42.ROM.Core.Application;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Function
 {
-  public class IndexModel : BaseIndexModel<Core.Domain.Function, ViewModel>
+  public class IndexModel : BaseIndexModel<Core.Domain.Function, Core.Domain.Function>
   {
     public IndexModel(IRead<Core.Domain.Function> readAction, IMapper mapper) : base(readAction, mapper)
     {
@@ -21,7 +21,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Function
       
       var functionsOrdered = functions.OrderBy(x => x.Name);
       
-      ViewModel = _mapper.Map<IList<ViewModel>>(functionsOrdered);
+      ViewModel = _mapper.Map<IList<Core.Domain.Function>>(functionsOrdered);
     }
   }
 }

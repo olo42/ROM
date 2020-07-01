@@ -8,5 +8,6 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Function
     public string Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
+    public bool Deleted { get; set; }
   }
 }

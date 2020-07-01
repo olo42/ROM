@@ -6,7 +6,7 @@ using com.github.olo42.ROM.Core.Application;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.Function
 {
-  public class DetailsModel : BaseDetailsModel<Core.Domain.Function, ViewModel>
+  public class DetailsModel : BaseDetailsModel<Core.Domain.Function, Core.Domain.Function>
   {
     public DetailsModel(
       IRead<Core.Domain.Function> readAction, 
