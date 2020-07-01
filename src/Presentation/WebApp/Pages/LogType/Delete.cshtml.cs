@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
-  public class DeleteModel : BaseDeleteModel<Core.Domain.LogType, LogTypeViewModel>
+  public class DeleteModel : BaseDeleteModel<Core.Domain.LogType, Core.Domain.LogType>
   {
     public DeleteModel(
       IRead<Core.Domain.LogType> readAction, 

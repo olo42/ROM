@@ -9,7 +9,7 @@ using com.github.olo42.ROM.Core.Application;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
-  public class IndexModel : BaseIndexModel<Core.Domain.LogType, LogTypeViewModel>
+  public class IndexModel : BaseIndexModel<Core.Domain.LogType, Core.Domain.LogType>
   {
     public IndexModel(IRead<Core.Domain.LogType> readAction, IMapper mapper) : base(readAction, mapper)
     {
@@ -21,7 +21,7 @@ namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
       
       var logTypesOrdered = logTypes.OrderBy(x => x.Name);
       
-      ViewModel = _mapper.Map<IList<LogTypeViewModel>>(logTypesOrdered);
+      ViewModel = _mapper.Map<IList<Core.Domain.LogType>>(logTypesOrdered);
     }
   }
 }

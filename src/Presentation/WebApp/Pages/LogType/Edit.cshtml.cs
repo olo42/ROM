@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
-  public class EditModel : BaseEditModel<Core.Domain.LogType, LogTypeViewModel>
+  public class EditModel : BaseEditModel<Core.Domain.LogType, Core.Domain.LogType>
   {
     public EditModel(
       IRead<Core.Domain.LogType> readAction, 

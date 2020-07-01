@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace com.github.olo42.ROM.Presentation.WebApp.Pages.LogType
 {
-  public class DetailsModel : BaseDetailsModel<Core.Domain.LogType, LogTypeViewModel>
+  public class DetailsModel : BaseDetailsModel<Core.Domain.LogType, Core.Domain.LogType>
   {
     public DetailsModel(IRead<Core.Domain.LogType> readAction, IMapper mapper) : base(readAction, mapper)
     {
